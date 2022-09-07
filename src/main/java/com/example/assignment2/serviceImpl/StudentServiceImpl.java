@@ -1,28 +1,38 @@
 package com.example.assignment2.serviceImpl;
 
-import com.example.assignment2.entity.Course;
+import com.example.assignment2.dto.CourseDTO;
+import com.example.assignment2.dto.StudentDTO;
 import com.example.assignment2.entity.Student;
 import com.example.assignment2.repository.StudentRepo;
 import com.example.assignment2.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepo studentRepo;
+    private final ModelMapper modelMapper;
 
     @Override
-    public List<Student> getAll() {
-        return studentRepo.getAll();
+    public List<StudentDTO> getAll() {
+        return studentRepo.getAll()
+                .stream().map(student -> modelMapper.map(student, StudentDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Student getById(int id) {
-        return studentRepo.getById(id);
+    public StudentDTO getById(int id) {
+        Student student = studentRepo.getById(id);
+        if(student != null){
+            return modelMapper.map(student, StudentDTO.class);
+        }
+        return null;
     }
 
     @Override
@@ -31,18 +41,22 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void update(int id, Student student) {
-        studentRepo.update(id, student);
+    public void update(int id, StudentDTO student) {
+        studentRepo.update(id, modelMapper.map(student, Student.class));
     }
 
     @Override
-    public List<Student> getByMajor(String major) {
-        return studentRepo.getByMajor(major);
+    public List<StudentDTO> getByMajor(String major) {
+        return studentRepo.getByMajor(major)
+                .stream().map(student -> modelMapper.map(student, StudentDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Course> getStudentCourses(int id) {
-        return studentRepo.getStudentCourses(id);
+    public List<CourseDTO> getStudentCourses(int id) {
+        return studentRepo.getStudentCourses(id)
+                .stream().map(course -> modelMapper.map(course, CourseDTO.class))
+                .collect(Collectors.toList());
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.assignment2.controller;
 
+import com.example.assignment2.dto.CourseDTO;
 import com.example.assignment2.entity.Course;
 import com.example.assignment2.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,12 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping
-    public List<Course> getAll(){
+    public List<CourseDTO> getAll(){
         return courseService.getAll();
     }
 
     @GetMapping("/{id:[0-9]}")
-    public Course getById(@PathVariable int id){
+    public CourseDTO getById(@PathVariable int id){
         return courseService.getById(id);
     }
 
@@ -30,7 +31,7 @@ public class CourseController {
     }
 
     @PutMapping("/{id:[0-9]}")
-    public void update(@PathVariable int id, @RequestBody Course course){
+    public void update(@PathVariable int id, @RequestBody CourseDTO course){
         courseService.update(id, course);
     }
 

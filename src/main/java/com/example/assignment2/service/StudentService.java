@@ -1,20 +1,20 @@
 package com.example.assignment2.service;
 
-import com.example.assignment2.entity.Course;
-import com.example.assignment2.entity.Student;
+import com.example.assignment2.dto.CourseDTO;
+import com.example.assignment2.dto.StudentDTO;
 
 import java.util.List;
 
 public interface StudentService {
-    List<Student> getAll();
+    List<StudentDTO> getAll();
 
-    Student getById(int id);
+    StudentDTO getById(int id);
 
     void delete(int id);
 
-    void update( int id, Student student);
+    void update( int id, StudentDTO student);
 
-    List<Student> getByMajor(String major);
+    List<StudentDTO> getByMajor(String major);
 
-    List<Course> getStudentCourses(int id);
+    List<CourseDTO> getStudentCourses(int id);
 }
