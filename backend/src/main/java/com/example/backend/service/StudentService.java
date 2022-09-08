@@ -17,4 +17,6 @@ public interface StudentService {
     List<StudentDTO> getByMajor(String major);
 
     List<CourseDTO> getStudentCourses(int id);
+
+    StudentDTO create(StudentDTO student);
 }

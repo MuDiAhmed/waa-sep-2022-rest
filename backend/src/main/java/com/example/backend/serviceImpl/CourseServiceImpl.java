@@ -1,7 +1,9 @@
 package com.example.backend.serviceImpl;
 
 import com.example.backend.dto.CourseDTO;
+import com.example.backend.dto.StudentDTO;
 import com.example.backend.entity.Course;
+import com.example.backend.entity.Student;
 import com.example.backend.repository.CourseRepo;
 import com.example.backend.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -38,5 +40,10 @@ public class CourseServiceImpl implements CourseService {
 
     public void update( int id, CourseDTO course){
         courseRepo.update(id, modelMapper.map(course, Course.class));
+    }
+
+    @Override
+    public CourseDTO create(CourseDTO course) {
+        return modelMapper.map(courseRepo.create(modelMapper.map(course, Course.class)), CourseDTO.class);
     }
 }

@@ -21,16 +21,16 @@ public class DataStore {
     }
 
     private void initMockCourses() {
-        courses.add(new Course(1, "MPP", "CS401"));
-        courses.add(new Course(2, "ASD", "CS525"));
-        courses.add(new Course(3, "EA", "CS540"));
-        courses.add(new Course(4, "WAA", "CS545"));
+        courses.add(new Course(1, "MPP", "CS401", new ArrayList<>()));
+        courses.add(new Course(2, "ASD", "CS525", new ArrayList<>()));
+        courses.add(new Course(3, "EA", "CS540", new ArrayList<>()));
+        courses.add(new Course(4, "WAA", "CS545", new ArrayList<>()));
     }
 
     private void initMockStudent() {
-        students.add(new Student(1, "Mo", "You", "student1@example.com", "CS", 4.0));
-        students.add(new Student(2, "Student2firstname", "Student2lastname", "student2@example.com", "Commerce", 3.56));
-        students.add(new Student(3, "Student3firstname", "Student3lastname", "student3@example.com", "Accounting", 3.78));
+        students.add(new Student(1, "Mo", "You", "student1@example.com", "CS", 4.0, new ArrayList<>()));
+        students.add(new Student(2, "Student2firstname", "Student2lastname", "student2@example.com", "Commerce", 3.56, new ArrayList<>()));
+        students.add(new Student(3, "Student3firstname", "Student3lastname", "student3@example.com", "Accounting", 3.78, new ArrayList<>()));
     }
 
     private void makeMockRelations(){

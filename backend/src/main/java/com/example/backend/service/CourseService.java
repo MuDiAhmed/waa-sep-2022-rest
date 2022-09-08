@@ -12,4 +12,6 @@ public interface CourseService {
     void delete(int id);
 
     void update( int id, CourseDTO course);
+
+    CourseDTO create(CourseDTO course);
 }

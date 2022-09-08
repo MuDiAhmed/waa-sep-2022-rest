@@ -34,6 +34,11 @@ public class StudentController {
         studentService.update(id, student);
     }
 
+    @PostMapping
+    public StudentDTO create(@RequestBody StudentDTO student){
+        return studentService.create(student);
+    }
+
     @GetMapping("/filter")
     public List<StudentDTO> getStudentsByMajor(@RequestParam String major){
         return studentService.getByMajor(major);

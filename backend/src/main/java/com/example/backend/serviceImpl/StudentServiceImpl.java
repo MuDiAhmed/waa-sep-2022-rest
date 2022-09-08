@@ -59,4 +59,9 @@ public class StudentServiceImpl implements StudentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public StudentDTO create(StudentDTO student) {
+        return modelMapper.map(studentRepo.create(modelMapper.map(student, Student.class)), StudentDTO.class);
+    }
+
 }

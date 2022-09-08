@@ -43,4 +43,10 @@ public class CourseRepo {
                 .findFirst().orElse(null);
         dataStore.getCourses().remove(foundCourse);
     }
+
+    public Course create(Course course) {
+        course.setId(dataStore.getCourses().size() + 1);
+        dataStore.getCourses().add(course);
+        return course;
+    }
 }

@@ -62,4 +62,10 @@ public class StudentRepo {
                 .map(Student::getCourses)
                 .findFirst().orElse(new ArrayList<>());
     }
+
+    public Student create(Student student) {
+        student.setId(dataStore.getStudents().size() + 1);
+        dataStore.getStudents().add(student);
+        return student;
+    }
 }

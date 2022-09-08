@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.dto.CourseDTO;
+import com.example.backend.dto.StudentDTO;
 import com.example.backend.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,8 @@ public class CourseController {
         courseService.update(id, course);
     }
 
-
+    @PostMapping
+    public CourseDTO create(@RequestBody CourseDTO course){
+        return courseService.create(course);
+    }
 }
